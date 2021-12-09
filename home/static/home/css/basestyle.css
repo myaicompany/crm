@@ -1,0 +1,71 @@
+html { width: 100%; height: 100%; overflow-x: hidden; }
+body { margin: 0px; padding: 0px; height: 100%; }
+* { box-sizing: border-box; }
+
+.level { display: table; width: 100%; }
+.widther { display: table; width: 1148px; margin: auto; }
+.widtherL { display: block; width: 574px; float: right; }
+.widtherR { display: block; width: 574px; float: left; }
+
+.center { display: flex; justify-content: center; align-content: center; align-items: center; flex-wrap: wrap; }
+.top { display: flex; justify-content: center; align-content: start; align-items: start; flex-wrap: wrap; }
+.bottom { display: flex; justify-content: center; align-content: flex-end; align-items: flex-end; flex-wrap: wrap; }
+.left { display: flex; justify-content: flex-start; align-content: center; align-items: center; flex-wrap: wrap; }
+.right { display: flex; justify-content: flex-end; align-content: center; align-items: center; flex-wrap: wrap; }
+.stretch { display: flex; flex-wrap: wrap; justify-content: start; align-content: stretch; align-items: stretch; }
+
+.ce { text-align: center; }
+.le { text-align: left; }
+.ri { text-align: right; }
+
+.pa { padding: 3%; }
+.ma { margin: 3%; }
+.lpa { padding-left: 1.5%; }
+.tpa { padding-top: 1.5%; }
+.rpa { padding-right: 1.5%; }
+.bpa { padding-bottom: 1.5%; }
+.lma { margin-left: 1.5%; }
+.tma { margin-top: 1.5%; }
+.rma { margin-right: 1.5%; }
+.bma { margin-bottom: 1.5%; }
+.tbpa { padding: 3% 0; }
+.flwr { display: flex; flex-wrap: wrap; }
+
+.span05 { width: 4.165%; float: left; }
+.span1 { width: 8.33%; float: left; }
+.span2 { width: 16.66%; float: left; }
+.span25 { width: 20%; float: left; }
+.span3 { width: 25%; float: left; }
+.span4 { width: 33.33%; float: left; }
+.span5 { width: 41.66%; float: left; }
+.span6 { width: 50%; float: left; }
+.span7 { width: 58.33%; float: left; }
+.span8 { width: 66.66%; float: left; }
+.span9 { width: 75%; float: left; }
+.span10 { width: 83.33%; float: left; }
+.span11 { width: 91.66%; float: left; }
+.span12 { width: 100%; float: left; }
+
+
+
+
+
+
+@media only screen and (max-width: 1200px) {
+    .widther { width: 90%; margin: 0 5%; }
+}
+
+@media only screen and (max-width: 1000px) {
+	.tbpa { padding: 6% 0; }
+	.span25 { width: 33.3%; } 
+    .span3, .span4, .span5 { width: 100%; } 
+    .span7, .span8, .span9 { width: 100%; }
+}
+
+@media only screen and (max-width: 500px) {
+	.tbpa { padding: 9% 0; }
+    .span1, .span2, .span25, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11 { width: 100%; }
+    .ce, .ri { text-align: left; }
+}
+
+

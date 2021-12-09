@@ -1,0 +1,25 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+    <div class="span12 ctg">
+
+        <h1 class="bt1">{{ title }}</h1>
+
+        {% if info %}
+            {% for i in info %}
+                <div class="row center">
+                    <div class="id left">{{ i.id }}</div>
+                    <div class="titl left">{{ i.titl }}</div>
+                    <div class="tool right">Настроечки)</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No</p>
+        {% endif %}
+    
+    </div>
+
+{% endblock %}
+
+

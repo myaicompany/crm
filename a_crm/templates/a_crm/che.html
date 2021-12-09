@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+    
+    <div class="span12 left">
+
+        <h1 class="bt1">{{ title }}</h1>
+
+        <div class="span12 tbpa">
+            
+            <!-- {{ itm_id }}<br> -->
+            <!-- {{ data }}<br> -->
+            <!-- {{ datalist }}<br> -->
+            <!-- {{ data.surn }}<br> -->
+            <!-- {{ data.date_birt }}<br> -->
+            <!-- {{ data.phot_natu }}<br> -->
+            <!-- {{ data.phot_reto }}<br> -->
+            <!-- {{ form }}<br> -->
+            <!-- {{ data.id }}<br> -->
+            <!-- {{ data.mana }}<br> -->
+            <!-- {{ x }}<br> -->
+            
+
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="error">{{ error }}</div>
+                
+                {% include 'a_crm/forma.html' %}
+
+                <div class="span12 left">
+                    <div class="span3"><button type="submit" class="btn">Сохранить</button></div>
+                    <div class="span9 left"><a href="{% url 'itm' itm_id %}">Вернуться не сохраняя</a></div>
+                </div>
+            
+            </form>
+            
+        </div>
+    
+    </div>
+
+{% endblock %}

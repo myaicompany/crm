@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+    <div class="span12">
+        
+        <h1 class="bt1">{{ info.titl }}</h1>
+        
+        <div class="span12 desc">
+            {{ info.desc }}
+        </div>
+
+        <div class="span12 cont">
+            {% autoescape off %}
+                {{ info.cont }}
+            {% endautoescape %}
+        </div>
+            
+    </div>
+
+{% endblock %}

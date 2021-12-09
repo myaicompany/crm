@@ -1,0 +1,4 @@
+crm/settings_prod.py
+crm/-settings_prod.py
+*/__pycache__/*
+logs/*

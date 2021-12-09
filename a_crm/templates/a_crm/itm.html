@@ -1,0 +1,152 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="span12 itm">
+        
+        <h1 class="bt1">{{ title }}</h1>
+
+        {% if info %}
+        
+        <div class="span12 tool center">
+
+            <div class="span6 left">
+
+                <div class="fini">
+                    {% if info.fini %}
+                    <img src="{% static 'home/images/finish.png' %}" alt="">
+                    {% else %}
+                    <img src="{% static 'home/images/process.png' %}" alt="">
+                    {% endif %}
+                </div>
+
+                <div class="mana">Менеджер: {{ mana }}</div>
+
+            </div>
+
+            <div class="span6 right">
+                <a href="{% url 'invoice' info.id %}" class="too">
+                    Накладная
+                </a>
+                <a href="{% url 'che' info.id %}"     class="too">
+                    Изменить
+                </a>
+                <a href="{% url 'rem' info.id %}"     class="rem">
+                    Удалить
+                </a>
+            </div>
+
+        </div>
+
+        <div class="span8 txt">
+
+            <div class="wrap span12">
+                <div class="span12 label">ФИО</div>
+                <div class="span12 info">{{ info.surn }} {{ info.name }} {{ info.midn }}</div>
+            </div>
+
+            <div class="wrap span12 birt">
+                <div class="span12 label">Дата рождения умершего</div>
+                <div class="span12 info">{{ info.date_birt|date:"d.m.Y" }}</div>
+            </div>
+            
+            <div class="wrap span12 deat">
+                <div class="span12 label">Дата смерти умершего</div>
+                <div class="span12 info">
+                    {% if info.date_deat %}
+                        {{ info.date_deat|date:"d.m.Y" }}
+                    {% else %}
+                        не выбрано
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="wrap span12">
+                <div class="span12 label">Дата выдачи заказа</div>
+                <div class="span12 info">
+                    {% if info.date_fune %}
+                        {{ info.date_fune|date:"d.m.Y" }}
+                    {% else %}
+                        не выбрано
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="wrap span12">
+                <div class="span12 label">Количество</div>
+                <div class="span12 info">{{ info.numb }}</div>
+            </div>
+
+            <div class="wrap span12">
+                <div class="span12 label">Код</div>
+                <div class="span12 info">{{ info.code }}</div>
+            </div>
+
+            <div class="wrap span12">
+                <div class="span12 label">Цвет</div>
+                <div class="span12 info">{{ info.colo }}</div>
+            </div>
+
+            <div class="wrap span12">
+                <div class="span12 label">Крепёж</div>
+                <div class="span12 info">{{ info.fast }}</div>
+            </div>
+
+            <div class="wrap span12">
+                <div class="span12 label">Ориентация</div>
+                <div class="span12 info">{{ info.posi }}</div>
+            </div>
+
+            <div class="wrap span12">
+                <div class="span12 label">Адрес доставки</div>
+                <div class="span12 info">{{ info.addr }}</div>
+            </div>
+
+            <div class="wrap span12">
+                <div class="span12 label">Рекомендации</div>
+                <div class="span12 info">{{ info.desc }}</div>
+            </div>
+
+        </div>
+
+        <div class="span4 pic">
+            <div>
+                {% if info.phot_natu %}
+                    <img class="imgs" src="{{ info.phot_natu.url }}" alt="">
+                    <a href="{{ info.phot_natu.url }}" target="_blank" download="" title="Скачать файл" class="down" onclick='confirm("Скачать файл?");'>Скачать файл</a>
+                {% else %}
+                    <img class="imgs" src="{% static 'home/images/no-photos.png' %}" alt="">
+                {% endif %}
+            </div>
+            <div>
+                {% if info.phot_reto %}
+                    <img class="imgs" src="{{ info.phot_reto.url }}" alt="">
+                    <a href="{{ info.phot_reto.url }}" target="_blank" download="" title="Скачать файл" class="down" onclick='confirm("Скачать файл?");'>Скачать файл</a>
+                {% else %}
+                    <img class="imgs" src="{% static 'home/images/no-photos.png' %}" alt="">
+                {% endif %}
+            </div>        
+        </div>
+
+        <div class="span12 sign">
+            <div class="span4">
+                <span>Агент: </span><span>{{ auth }}</span>
+            </div>
+            <div class="span4">
+                <span>Менеджер: </span><span>{{ mana }}</span>
+            </div>                
+            <div class="span4">
+                <span>Дата внесения: </span><span>{{ info.time_crea }}</span>
+            </div>   
+            
+        </div>
+
+        {% else %}
+            <p>No info</p>
+        {% endif %}
+
+    </div>
+
+{% endblock %}

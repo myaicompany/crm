@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+{% load crm_tags %}
+
+{% block content %}
+
+    <div class="span12 home">
+        
+        <h1 class="bt1">{{ title }}</h1>
+        
+        <div class="span12">
+
+            {% mmenu as mmenu %}
+            {% for m in mmenu %}
+            <div class="span3 wrap">
+                <a href="{% url m.url %}">
+                    <div class="pic"><img src="{% static m.img %}" alt=""></div>
+                    <div class="txt">{{ m.title }}</div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

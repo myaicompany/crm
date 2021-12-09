@@ -1,0 +1,97 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="span12 rpt">
+        
+        <h1 class="bt1">{{ title }}</h1>
+        
+
+        <div class="span12 uptool left">
+            <div class="label">Быстрый отчёт: </div>
+            <!-- <a href="{% url 'rpt' %}?period=day" class="too">
+                День
+            </a>
+            <a href="{% url 'rpt' %}?period=mou" class="too">
+                Месяц
+            </a> -->
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="period" value="day">
+                <!-- с  <input type="date" name="point1" value="{{ point1 }}"> -->
+                <!-- по <input type="date" name="point2" value="{{ point2 }}"> -->
+                <button type="submit">День</button>
+            </form>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="period" value="mou">
+                <!-- с  <input type="date" name="point1" value="{{ point1 }}"> -->
+                <!-- по <input type="date" name="point2" value="{{ point2 }}"> -->
+                <button type="submit">Месяц</button>
+            </form>
+
+
+        </div>
+
+
+        <div class="span12 uptool left">
+            <div class="label">Отчёт за период: </div>
+            <div>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="period" value="cus">
+                    с  <input type="date" name="point1" value="{{ point1 }}">
+                    по <input type="date" name="point2" value="{{ point2 }}">
+                    <button type="submit">Показать</button>
+                </form>
+            </div>
+        </div>
+        
+
+        <div class="span12">
+            <p>{{ subtitle }}</p>
+        </div>
+
+        {% if data %}
+        <div class="span12">
+            
+            <div class="span12 row head left">
+                <div class="id">№</div>
+                <div class="fio">ФИО</div>
+                <div class="info">Код товара</div>
+                <div class="info">Цена, руб</div>
+                <div class="info">Количество</div>
+                <div class="info">Сумма, руб</div>
+            </div>
+
+            {% for d in data %}
+                <div class="span12 row left">
+                    <div class="id">{{ d.id }}</div>
+                    <div class="fio">{{ d.surn }} {{ d.name }} {{ d.midn }}</div>
+                    <div class="info">{{ d.code.titl }}</div>
+                    <div class="info">{{ d.code.cost }}</div>
+                    <div class="info">{{ d.numb }}</div>
+                    <div class="info">{% widthratio d.code.cost d.numb 1 %}</div>
+                </div>
+            {% endfor %}
+            
+            <div class="span12 row count left">
+                <div class="id">Итого:</div>
+                <div class="fio"> </div>
+                <div class="info"> </div>
+                <div class="info"> </div>
+                <div class="info">{{ totalcoun }}</div>
+                <div class="info">{{ totalcost }}</div>
+            </div>
+
+
+        </div>
+        {% endif %}
+        
+    </div>
+
+{% endblock %}

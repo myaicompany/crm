@@ -1,0 +1,20 @@
+{% extends 'home/base_empty.html' %}
+
+{% block content %}
+<div class="span5 box">
+
+    <h1 class="bt1">{{ title }}</h1>
+
+    <form action="{% url 'lgn' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="span12 center">
+            <div class="span6 left"><button type="submit" class="btn">Войти</button></div>
+            <div class="span6 right"><a href="{% url 'rgt' %}">Зарегистрировать нового пользователя</a></div>
+        </div>
+        
+    </form>
+
+</div>
+{% endblock %}

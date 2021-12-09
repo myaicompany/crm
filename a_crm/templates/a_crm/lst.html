@@ -1,0 +1,84 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="span12 lst">
+
+        <h1 class="bt1">{{ title }} ({{ len }})</h1>
+
+        <div class="span12">
+            
+            <div class="span6 uptool left">
+                {% if is_manager %}
+                    {% include 'a_crm/search.html' %}
+                {% endif %}
+            </div>
+    
+            <div class="span6 uptool right">
+                <a href="{% url 'lst' %}" class="too">
+                    Все
+                </a>
+                <a href="{% url 'lst' %}?fini=False" class="too">
+                    В работе
+                </a>
+                <a href="{% url 'lst' %}?fini=True" class="too">
+                    Законченные
+                </a>
+            </div>
+
+        </div>
+
+
+
+
+
+
+        {% if data %}
+            {% for d in data %}
+
+                <div class="row center">
+                    <div class="fini left">
+                        {% if d.fini %}
+                            <img src="{% static 'home/images/finish.png' %}" alt="">
+                        {% else %}
+                            <img src="{% static 'home/images/process.png' %}" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="id left">{{ d.id }}</div>
+                    <div class="titl left"><a href="{{ d.get_absolute_url }}">{{ d.surn }} {{ d.name }} {{ d.midn }}</a></div>
+                    
+                    <div class="auth left">Агент: {{ d.auth.last_name }}</div>
+                    
+                    <div class="mana left">Менеджер: 
+                        {% if d.mana %}
+                            {{ d.mana.last_name }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </div>
+                    
+                    <div class="tool right">
+                        {% if d.phot_natu %}
+                        <a href="{{ d.phot_natu.url }}"  download="" onclick='confirm("Скачать фото?");'>
+                            <img class="mini" src="{% static 'home/images/imag.png' %}" alt="Скачать фото" title="Скачать фото">
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'itm' d.id %}">
+                            <img class="mini" src="{% static 'home/images/look.png' %}" alt="Просмотр" title="Просмотр">
+                        </a>
+                        <a href="{% url 'che' d.id %}">
+                            <img class="mini" src="{% static 'home/images/edit.png' %}" alt="Редактировать" title="Редактировать">
+                        </a>
+                    </div>
+                </div>
+                
+            {% endfor %}
+        {% else %}
+            <div class="span12 no">Результатов не найдено</div>
+        {% endif %}
+    
+    </div>
+
+{% endblock %}

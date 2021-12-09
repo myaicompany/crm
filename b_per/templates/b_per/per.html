@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="span12 per">
+        
+        <h1 class="bt1">{{ title }}</h1>
+
+        
+        
+        {% if info %}
+        <div class="span9 txt">
+
+            <div class="wrap">
+                <div class="label">ФИО Агента:</div>
+                <div class="info">{{ info.first_name }} {{ info.last_name }}</div>
+            </div>
+
+            <div class="wrap">
+                <div class="label">e-mail:</div>
+                <div class="info">{{ info.email }}</div>
+            </div>
+
+            <div class="wrap">
+                <div class="label">Телефон:</div>
+                <div class="info">{{ info.persons.phon }}</div>
+            </div>
+
+            <div class="wrap">
+                <div class="label">Группа:</div>
+                <div class="info">{{ groups }}</div>
+            </div>
+
+            <div class="wrap">
+                <div class="label">Организация:</div>
+                <div class="info">{{ info.persons.orga }}</div>
+            </div>
+
+        </div>
+
+        <div class="span3 pic">
+            {% if info.persons.avat %}
+                <img class="imgs" src="{{ info.persons.avat.url }}" alt="">
+            {% else %}
+                <img class="imgs" src="{% static 'a_home/images/user.png' %}" alt="">
+            {% endif %}
+        </div>
+        {% endif %}
+        
+    </div>
+
+{% endblock %}

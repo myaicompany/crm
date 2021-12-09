@@ -1,0 +1,115 @@
+{% load static %}
+{% load crm_tags %}
+{% is_manager as is_manager %}
+
+<div class="span12">
+
+    <div class="span8 leftblock">
+        
+        <div class="error"></div>
+
+        {% if is_manager %}
+        <div class="groups">
+            {{ form.mana_chec }}
+        </div>
+        {% endif %}
+
+        <div class="groups">
+            <label>Фамилия умершего:</label> 
+            {{ form.surn }}
+        </div>
+        
+        <div class="groups">
+            <label>Имя умершего:</label> 
+            {{ form.name }}
+        </div>
+
+        <div class="groups">
+            <label>Отчество умершего:</label> 
+            {{ form.midn }}
+        </div>
+
+        <div class="groups">
+            <label>Дата рождения умершего:</label>
+            {{ form.date_birt }}
+        </div>
+
+        <div class="groups">
+            <label>Дата смерти:</label>
+            {{ form.date_deat }}
+        </div>
+
+        <div class="groups">
+            <label>Дата выдачи заказа:</label>
+            {{ form.date_fune }}
+        </div>
+
+        <div class="groups">
+            <label>Код:</label>
+            {{ form.code }}
+        </div>
+
+        <div class="groups">
+            <label>Цвет рамки:</label>
+            {{ form.colo }}
+        </div>
+
+        <div class="groups">
+            <label>Крепление:</label>
+            {{ form.fast }}
+        </div>
+
+        <div class="groups">
+            <label>Ориентация:</label>
+            {{ form.posi }}
+        </div>
+
+        <div class="groups">
+            <label>Адрес доставки:</label>
+            {{ form.addr }}
+        </div>
+
+        <div class="groups">
+            <label>Количество:</label>
+            {{ form.numb }}
+        </div>
+
+        <div class="groups">
+            <label>Рекомендации по ретуши фотографии:</label>
+            {{ form.desc }}
+        </div>
+
+        <div class="groups">
+            <label>Согласовано:</label>
+            {{ form.agre }}
+        </div>
+
+        {% if is_manager %}
+        <div class="groups">
+            <label for="id_fini">Завершено:</label>
+            {{ form.fini }}
+        </div>
+        {% endif %}
+
+    </div>
+    
+    <div class="span4 rightblock">
+
+        <div class="groups">
+            {{ form.phot_natu }}
+        </div>
+
+        {% if is_manager %}
+        <div class="groups">
+            {{ form.phot_reto }}
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+
+
+

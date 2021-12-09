@@ -1,0 +1,29 @@
+{% load static %}
+{% load crm_tags %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'home/css/basestyle.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/mystyle.css' %}">
+    <script src="{% static 'home/js/myjs.js' %}"></script>
+    <title>{{ title }}</title>
+</head>
+
+<style>
+    @font-face { font-family: 'head'; src: url("{% static 'home/fonts/Roboto-Medium.ttf' %}"); }
+    @font-face { font-family: 'text'; src: url("{% static 'home/fonts/Roboto-Light.ttf' %}"); }
+</style>
+
+<body>
+    <div class="empty center">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

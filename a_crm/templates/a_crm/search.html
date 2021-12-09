@@ -1,0 +1,13 @@
+{% load static %}
+{% load crm_tags %}
+{% is_manager as is_manager %}
+
+
+
+<form method="POST" action="{% url 'lst' %}" method="GET" class="searform">
+    {% csrf_token %}
+    {{ searform.agent }}
+    <button type="submit" class="">Искать</button>
+</form>
+
+

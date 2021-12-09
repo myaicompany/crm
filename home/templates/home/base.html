@@ -1,0 +1,140 @@
+{% load static %}
+{% load crm_tags %}
+
+<!DOCTYPE html>
+
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'home/css/basestyle.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/mystyle.css' %}">
+    <script src="{% static 'home/js/myjs.js' %}"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- XDSoft DateTimePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+
+    <title>{{ title }}</title>
+</head>
+
+<style>
+    @font-face { font-family: 'head'; src: url("{% static 'home/fonts/Roboto-Medium.ttf' %}"); }
+    @font-face { font-family: 'text'; src: url("{% static 'home/fonts/Roboto-Light.ttf' %}"); }
+</style>
+
+<body onload="startjs();">
+
+    <div class="level release">Release 12.6</div>
+
+    <header class="level center">
+        <nav class="widther left">
+
+            <div class="logo left">
+                <a href="{% url 'home' %}" class="left"><img src="{% static 'home/images/obirdlogo.png' %}" alt=""></a>
+            </div>
+            
+            <div class="pers right">
+
+                <div class="info">
+                    {% user_groups as user_groups %}
+                    <span class="label">Группы пользователя:</span>
+                    <span>{{ user_groups }}</span>
+                </div>
+
+                <div class="info">
+                    {% user_orga   as user_orga %}
+                    <span class="label">Организация:</span>
+                    <span>{{ user_orga }}</span>
+                </div>
+
+                <div class="info link">
+                    <a href="{% url 'per' %}">
+                        <span>{{ user.last_name }} {{ user.first_name }}</span>
+                    </a>
+                </div>
+
+                <div class="info link">
+                    <a href="{% url 'lgt' %}">
+                        <span>Выход</span>
+                    </a>
+                </div>
+
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="level content top">
+        <div class="widther top">
+
+            <div class="span3 sidebar">
+                
+                <div class="span12 action">
+
+                    <div class="q"></div>
+
+                    <span class="bt4">Действия</span>
+                    <ul>
+                        {% is_manager as is_manager %}
+                        {% mmenu as mmenu %}
+                        {% for m in mmenu %}
+                            {% if m.rul == '' %}
+                                <li><a href="{% url m.url %}"  class="{{ m.class }}">{{ m.title }}</a></li>
+                            {% else %}
+                                {% if is_manager %}
+                                    <li><a href="{% url m.url %}"  class="{{ m.class }}">{{ m.title }}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="span12 infos">
+                    <span class="bt4">Информация</span>
+                    {% infos as infos %}
+                    <ul>
+                        <li><a class="" href="{% url 'aboutcodes' %}">Описание кодов</a></li>
+                    </ul>
+                </div>
+            
+            </div>
+            
+            <div class="span9 article">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            
+        </div>
+    </div>
+
+    <footer class="level">
+        <div class="widther">
+            <div class="span6">&#169; Бюро Бердникова, 2021</div>
+            <div class="span6">Если у вас возникли сложности с заполнением формы или с каким либо заказом, звоните +7 903 144-92-55 </div>
+        </div>
+    </footer>
+
+    <div class="subfooter"></div>
+
+
+    <script>
+        $(function () {
+            $(".dates").datetimepicker({
+                format: 'd.m.Y',
+            });
+        });
+    </script>
+
+
+</body>
+</html>
